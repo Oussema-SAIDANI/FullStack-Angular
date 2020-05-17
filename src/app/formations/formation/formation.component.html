@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="alert alert-warning" *ngIf="formationForm.dirty && formationForm.invalid">Remplir les champs</div>
+  <!-- par exmple -->
+  <!-- mezelt mch modifier : prestine -->
+  <!-- voig angualr validation wschool : il ya satet champs et state formulaire w fama css classes -->
+  <div class="alert alert-warning" *ngIf="formationForm.pristine && date.invalid">Remplir champ date</div>
+<form (ngSubmit)="!formationForm.invalid && Save()"  #formationForm="ngForm">
+    <fieldset class="form-group">
+      <label>Description</label>
+      <input type="text" class="form-control" name="description" [(ngModel)]="formation.description" required>
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Date</label>
+      <input type="date" class="form-control" name="date" #date="ngModel"
+      [ngModel]="formation.date | date:'yyyy-MM-dd'"
+      (ngModelChange) = "formation.date = $event"
+      required>
+    </fieldset>
+    <button class="btn btn-success" type="submit" > Save</button>
+</form>
+
+</div>
